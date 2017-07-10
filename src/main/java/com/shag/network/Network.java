@@ -2,7 +2,6 @@ package com.shag.network;
 
 import com.shag.Exceptions.DeviceAddException;
 import com.shag.device.Device;
-
 import java.util.List;
 
 public interface Network {
@@ -16,10 +15,14 @@ public interface Network {
 
     List<Device> getAllDevices();
 
+    int getDevicesLimit();
+
+    void setDevicesLimit(int devicesLimit);
+
     void clearNetwork();
 
-    boolean pushData();
+    boolean pushData(Network network, String data);
 
-    boolean getData();
+    boolean getData(String data);
 
 }

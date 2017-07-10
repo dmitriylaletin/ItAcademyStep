@@ -9,18 +9,22 @@ import com.shag.network.Network;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NetworkMAN implements Network {
+public class NetworkMAN extends AbstractNetwork {
 
-    private Connection connection;
-
-    private int devicesLimit;
-
-    private List<Device> devices = new ArrayList<Device>();
 
     public NetworkMAN(int devicesLimit) throws DeviceLimitException {
         if (devicesLimit < 1) throw new DeviceLimitException();
-        this.devicesLimit = devicesLimit;
+        setDevicesLimit(devicesLimit);
     }
+
+    private String dataString;
+
+    private int devicesLimit;
+
+    private Connection connection;
+
+    private List<Device> devices = new ArrayList<Device>();
+
 
     public int getDevicesLimit() {return devicesLimit;}
 
@@ -35,7 +39,7 @@ public class NetworkMAN implements Network {
     }
 
     public void addDevice(Device device) throws DeviceAddException {
-        if (devices.size() + 1 > devicesLimit) throw new DeviceAddException();
+        if (devices.size() >= devicesLimit) throw new DeviceAddException();
         devices.add(device);
     }
 
@@ -43,24 +47,26 @@ public class NetworkMAN implements Network {
         return devices.get(index);
     }
 
+    public List<Device> getAllDevices() {
+        return null;
+    }
+
     public boolean removeDevice(Device device) {
         return devices.remove(device);
     }
 
-    public List<Device> getAllDevices() {
-        return null;
-    }
 
     public void clearNetwork() {
         devices.clear();
     }
 
-    public boolean pushData() {
+    @Override
+    public boolean pushData(Network network, String data) {
         return false;
     }
 
-    public boolean getData() {
+    @Override
+    public boolean getData(Network network, String data) {
         return false;
     }
-
 }
