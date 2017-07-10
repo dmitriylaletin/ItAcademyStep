@@ -1,4 +1,4 @@
-package com.shag.Exceptions;
+package com.shag.exceptions;
 
 /**
  * Created by laletin on 10.07.17.
@@ -6,6 +6,6 @@ package com.shag.Exceptions;
 public class DeviceLimitException extends Exception {
     @Override
     public String toString() {
-        return "Amount of devices can not be lower than 1";
+        return "Device limit error: Amount of devices can not be lower than 1";
     }
 }

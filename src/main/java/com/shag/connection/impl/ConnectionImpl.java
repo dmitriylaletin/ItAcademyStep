@@ -1,21 +1,20 @@
 package com.shag.connection.impl;
 
-import com.shag.Exceptions.ConnectionException;
+import com.shag.exceptions.ConnectionException;
 import com.shag.connection.Connection;
 
 public class ConnectionImpl implements Connection {
 
-    private String IPAddress;
     private String port;
+    private String IPAddress;
 
-    public ConnectionImpl(String IPAddress, String port) throws ConnectionException {
+    public ConnectionImpl(String port, String IPAddress) {
 
-        if ((IPAddress == null)||(port == null)) {
-            throw new ConnectionException();
-        }
-
-        this.IPAddress = IPAddress;
-        this.port = port;
+        try {
+            if ((IPAddress == null) || (port == null)) {throw new ConnectionException();}
+            this.IPAddress = IPAddress;
+            this.port = port;
+        } catch (ConnectionException e){System.out.println(e.toString());}
     }
 
     public String getIPAddress() {
@@ -26,20 +25,17 @@ public class ConnectionImpl implements Connection {
         this.IPAddress = IPAddress;
     }
 
-    public String getPort() {
-        return port;
-    }
+    public String getPort() { return port; }
 
-    public void setPort(String port) {
-        this.port = port;
-    }
+    public void setPort(String port) { this.port = port; }
 
     public Boolean connect(String IPAddress, String port) {
-        return null;
+
+        if ((this.IPAddress.equals(IPAddress))&&(this.port.equals(port))) return true;
+        else return false;
     }
 
     public Boolean disconnect() {
         return null;
     }
-
 }

@@ -1,4 +1,4 @@
-package com.shag.Exceptions;
+package com.shag.exceptions;
 
 /**
  * Created by laletin on 10.07.17.

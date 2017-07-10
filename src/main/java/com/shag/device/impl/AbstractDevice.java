@@ -5,8 +5,13 @@ import com.shag.network.Network;
 
 abstract class AbstractDevice {
 
+    private String name;
     private Connection connection;
     private Network network;
+
+    public String getName() {return name;}
+
+    public void setName(String name) {this.name = name;}
 
     public Connection getConnection() {
         return connection;

@@ -1,11 +1,6 @@
 package com.shag.network.impl;
 
-import com.shag.Exceptions.DeviceAddException;
-import com.shag.connection.Connection;
-import com.shag.device.Device;
 import com.shag.network.Network;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by laletin on 10.07.17.

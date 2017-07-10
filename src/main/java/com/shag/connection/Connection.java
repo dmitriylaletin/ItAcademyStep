@@ -6,4 +6,12 @@ public interface Connection {
 
     Boolean disconnect();
 
+    public String getIPAddress();
+
+    public void setIPAddress(String IPAddress);
+
+    public String getPort();
+
+    public void setPort(String port);
+
 }

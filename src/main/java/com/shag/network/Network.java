@@ -1,13 +1,16 @@
 package com.shag.network;
 
-import com.shag.Exceptions.DeviceAddException;
+import com.shag.connection.Connection;
 import com.shag.device.Device;
 import java.util.List;
 
 public interface Network {
 
+    void addDevice(Device device);
 
-    void addDevice(Device device) throws DeviceAddException;
+    public Connection getConnection();
+
+    public void setConnection(Connection connection);
 
     Device getDevice(int index);
 
@@ -21,7 +24,7 @@ public interface Network {
 
     void clearNetwork();
 
-    boolean pushData(Network network, String data);
+    boolean pushData(Device device, String data);
 
     boolean getData(String data);
 
