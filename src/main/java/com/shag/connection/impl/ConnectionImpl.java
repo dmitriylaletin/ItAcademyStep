@@ -1,11 +1,22 @@
 package com.shag.connection.impl;
 
+import com.shag.Exceptions.ConnectionException;
 import com.shag.connection.Connection;
 
 public class ConnectionImpl implements Connection {
 
     private String IPAddress;
     private String port;
+
+    public ConnectionImpl(String IPAddress, String port) throws ConnectionException {
+
+        if ((IPAddress == null)||(port == null)) {
+            throw new ConnectionException();
+        }
+
+        this.IPAddress = IPAddress;
+        this.port = port;
+    }
 
     public String getIPAddress() {
         return IPAddress;
@@ -30,6 +41,5 @@ public class ConnectionImpl implements Connection {
     public Boolean disconnect() {
         return null;
     }
-
 
 }
