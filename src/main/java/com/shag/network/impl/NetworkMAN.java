@@ -1,5 +1,7 @@
 package com.shag.network.impl;
 
+import com.shag.Exceptions.DeviceAddException;
+import com.shag.Exceptions.DeviceLimitException;
 import com.shag.connection.Connection;
 import com.shag.device.Device;
 import com.shag.network.Network;
@@ -10,7 +12,19 @@ import java.util.List;
 public class NetworkMAN implements Network {
 
     private Connection connection;
+
+    private int devicesLimit;
+
     private List<Device> devices = new ArrayList<Device>();
+
+    public NetworkMAN(int devicesLimit) throws DeviceLimitException {
+        if (devicesLimit < 1) throw new DeviceLimitException();
+        this.devicesLimit = devicesLimit;
+    }
+
+    public int getDevicesLimit() {return devicesLimit;}
+
+    public void setDevicesLimit(int devicesLimit) {this.devicesLimit = devicesLimit;}
 
     public Connection getConnection() {
         return connection;
@@ -20,7 +34,8 @@ public class NetworkMAN implements Network {
         this.connection = connection;
     }
 
-    public void addDevice(Device device) {
+    public void addDevice(Device device) throws DeviceAddException {
+        if (devices.size() + 1 > devicesLimit) throw new DeviceAddException();
         devices.add(device);
     }
 
