@@ -1,4 +1,4 @@
-package com.shag.exceptions;
+package com.shag.networkSim.exceptions;
 
 /**
  * Created by laletin on 10.07.17.

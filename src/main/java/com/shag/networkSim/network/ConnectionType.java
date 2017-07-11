@@ -1,4 +1,4 @@
-package com.shag.network;
+package com.shag.networkSim.network;
 
 public enum ConnectionType {
 
