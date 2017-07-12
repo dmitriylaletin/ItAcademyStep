@@ -15,6 +15,7 @@ public class DeviceImpl extends AbstractDevice implements Device {
 
     public void sendByHTTP (Device reciever,  String data){
         System.out.println("Device " + this.getName() + " with IP: " + this.getConnection().getIPAddress()+
+                " on port:" + this.getConnection().getPort()+
                 " established connection to " + reciever.getName() +
                 " with IP: " + reciever.getConnection().getIPAddress() + " successful \n ");
         this.request(reciever, data);

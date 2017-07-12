@@ -8,6 +8,8 @@ import com.shag.networkSim.network.NetworkFactoryMethod;
 
 public class Main {
 
+    private final static String IP = "255.255.255.1";
+
     public static void main(String [] args) {
 
         String data = "This is a test string that should be transferred as the data to another " +
@@ -16,9 +18,9 @@ public class Main {
         Network homeNetwork = NetworkFactoryMethod.getNetwork("LAN","homeNetwork", 2);
 
         Device macBook = new DeviceImpl("MacBook",
-                new ConnectionImpl("255.255.255.1", "8088"), homeNetwork);
+                new ConnectionImpl(IP, "8088"), homeNetwork);
         Device iPhone = new DeviceImpl("iPhone",
-                new ConnectionImpl("255.255.255.4", "8088"), homeNetwork);
+                new ConnectionImpl(IP, "8089"), homeNetwork);
 
         homeNetwork.getAllDevicesInfo();
 
