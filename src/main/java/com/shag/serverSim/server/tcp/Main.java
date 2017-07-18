@@ -1,5 +1,10 @@
 package com.shag.serverSim.server.tcp;
 
+import java.io.InputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.logging.Logger;
+
 /**
  * Created by Dmitriy Laletin
  * on 15 Июль 2017
@@ -7,19 +12,19 @@ package com.shag.serverSim.server.tcp;
  */
 public class Main {
 
+    private final  static String DEFAULT_HOST = "127.0.0.1";
+    private final  static int DEFAULT_PORT = 8888;
+
+    private static final Logger LOGGER = Logger.getLogger(com.shag.serverSim.client.tcp.Main.class.getName());
+
     public static void main(String[] args) {
 
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-//        String ln = null;
-//
-//        try {
-//            while ((ln = reader.readLine()) != null) {
-//                System.out.println(ln);
-//                System.out.flush();
-//            }
-//        } catch (IOException e) {
-//            System.out.println("Ошибка при чтении сообщения.");
-//            System.exit(-1);
-//        }
+        ServerTCP serverTCP = new ServerTCPImpl();
+        ServerSocket serverSocket = serverTCP.setServerSocket(DEFAULT_PORT);
+        Socket clientSocket = serverTCP.setSocket(serverSocket);
+        InputStream inputStream = serverTCP.setInputStream(clientSocket);
+        serverTCP.listen(inputStream);
+
+        System.out.println("Something");
     }
 }

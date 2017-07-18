@@ -1,5 +1,7 @@
 package com.shag.serverSim.client.tcp;
 
+import java.io.OutputStream;
+import java.net.Socket;
 import java.util.logging.Logger;
 
 /**
@@ -9,22 +11,18 @@ import java.util.logging.Logger;
  */
 public class Main {
 
+    private final  static String DEFAULT_HOST = "127.0.0.1";
+    private final  static int DEFAULT_PORT = 8888;
+
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(
-//                System.in));
 
-//        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
-//        String ln = null;
-//        try {
-//            while ((ln = reader.readLine()) != null) {
-//                writer.write(ln + "\n");
-//                writer.flush();
-//            }
-//        } catch (IOException e) {
-//            System.out.println("Ошибка при записи сообщения.");
-//            System.exit(-1);
-//        }
+        ClientTCP clientTCP = new ClientTCPImpl();
+        Socket socket = clientTCP.setSocket(DEFAULT_HOST, DEFAULT_PORT);
+        OutputStream outputStream = clientTCP.setOutputStream(socket);
+        clientTCP.send(outputStream);
     }
-}
+
+    }
+
