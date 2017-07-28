@@ -20,9 +20,9 @@ public class ServerTCPImpl implements ServerTCP {
         ServerSocket server = null;
         try {
             server = new ServerSocket(port);
-            LOGGER.log(Level.INFO, "Server has been created on port" + port);
+            LOGGER.log(Level.INFO, "Server has been created on port " + port);
         } catch (IOException e) {
-            LOGGER.log(Level.WARNING, "Server has not been created on port" + port);
+            LOGGER.log(Level.WARNING, "Server has not been created on port " + port);
             e.printStackTrace();
         }
         return server;
@@ -32,7 +32,7 @@ public class ServerTCPImpl implements ServerTCP {
     public Socket setSocket(ServerSocket serverSocket) {
         Socket fromserver = null;
         try {
-            serverSocket.accept();
+            fromserver = serverSocket.accept();
             LOGGER.log(Level.INFO, "Client server socket has caught");
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, "Client server socket has not been caught");
@@ -43,15 +43,15 @@ public class ServerTCPImpl implements ServerTCP {
 
     @Override
     public InputStream setInputStream(Socket socket) {
-        InputStream in = null;
+        InputStream inputStream = null;
         try {
-        in = socket.getInputStream();
+        inputStream = socket.getInputStream();
         LOGGER.log(Level.INFO, "Input stream has been set");
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, "Input stream has not been set");
            e.printStackTrace();
         }
-        return in;
+        return inputStream;
     }
 
     @Override

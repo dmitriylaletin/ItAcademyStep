@@ -21,9 +21,9 @@ public class ClientTCPImpl implements ClientTCP {
         Socket socket = null;
         try {
             socket = new Socket(host, port);
-            LOGGER.log(Level.INFO, "Socket has been created on host" + host + " on port" + port);
+            LOGGER.log(Level.INFO, "Socket has been created on host " + host + " on port " + port);
         } catch (IOException e) {
-            LOGGER.log(Level.WARNING, "Socket has not been created on host" + host + " on port" + port);
+            LOGGER.log(Level.WARNING, "Socket has not been created on host " + host + " on port " + port);
             e.printStackTrace();
         }
         return socket;
@@ -46,10 +46,15 @@ public class ClientTCPImpl implements ClientTCP {
     public void send(OutputStream outputStream) {
          BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
          BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream));
-         String ln = null;
+         String clientData = null;
         try {
-            while ((ln = reader.readLine()) != null) {
-                writer.write(ln + "\n");
+            while ((clientData = reader.readLine()) != null) {
+                if (clientData.equalsIgnoreCase("exit")) {
+                    System.out.println("Do you want to stop stream ? Y/N");
+                    if ((reader.readLine()).equals("Y")) break;
+                    else continue;
+                }
+                writer.write(clientData + "\n");
                 writer.flush();
           }
        } catch (IOException e) {

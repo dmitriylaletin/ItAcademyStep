@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class Main {
 
     private final  static String DEFAULT_HOST = "127.0.0.1";
-    private final  static int DEFAULT_PORT = 8888;
+    private final  static int DEFAULT_PORT = 8881;
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
